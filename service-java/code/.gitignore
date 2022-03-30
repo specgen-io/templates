@@ -1,0 +1,24 @@
+{{#build_system.maven}}
+### Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+{{/build_system.maven}}
+
+### Generated swagger
+src/main/resources/static/docs/swagger.yaml
+
+### Eclipse ###
+.settings/
+.classpath
+.project
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
