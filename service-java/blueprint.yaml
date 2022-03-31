@@ -31,6 +31,10 @@ args:
     type: string
     description: java package name
     default: theservice
+  swagger:
+    type: boolean
+    description: do you want to enable swagger generation and hosting
+    default: yes
   versions:
     type: map
     description: libraries versions
