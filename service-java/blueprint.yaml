@@ -1,14 +1,13 @@
 blueprint: 0
 name: service-java
 title: Specgen Java Service
-roots: [maven, code]
-ignore: []
+roots: [common, build, src]
 args:
   project_name:
     type: string
     description: project name
     default: the-service
-  build_system:
+  build:
     type: string
     description: build system
     values: [maven, gradle]
@@ -31,6 +30,10 @@ args:
     type: string
     description: java package name
     default: theservice
+  main_class:
+    type: string
+    description: java main class
+    default: MyApplication
   swagger:
     type: boolean
     description: do you want to enable swagger generation and hosting
@@ -43,3 +46,11 @@ args:
         type: string
         description: specgen version
         default: 2.1.1591
+      springfox:
+        type: string
+        description: springfox version
+        default: 3.0.0
+      spring_boot:
+        type: string
+        description: spring boot version
+        default: 2.5.5
