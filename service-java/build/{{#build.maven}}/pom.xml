@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.5</version>
+        <version>{{versions.spring_boot.value}}</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -25,34 +25,36 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.6.4</version>
+            <version>{{versions.spring_boot.value}}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.6.4</version>
+            <version>{{versions.spring_boot.value}}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>2.6.4</version>
+            <version>{{versions.spring_boot.value}}</version>
         </dependency>
+        {{#swagger.value}}
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.0</version>
+            <version>{{versions.springfox.value}}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
+            <version>{{versions.springfox.value}}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>3.0.0</version>
+            <version>{{versions.springfox.value}}</version>
         </dependency>
+        {{/swagger.value}}
     </dependencies>
 
     <build>
@@ -60,7 +62,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.5</version>
+                <version>{{versions.spring_boot.value}}</version>
             </plugin>
             <plugin>
                 <groupId>io.specgen</groupId>
@@ -76,7 +78,10 @@
                 <configuration>
                     <specFile>${project.basedir}/spec.yaml</specFile>
                     <packageName>{{package_name.value}}</packageName>
+                    <server>{{server.value}}</server>
+                    {{#swagger.value}}
                     <swaggerPath>src/main/resources/static/docs/swagger.yaml</swaggerPath>
+                    {{/swagger.value}}
                     <servicesPath>src/main/java</servicesPath>
                 </configuration>
             </plugin>

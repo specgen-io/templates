@@ -1,13 +1,15 @@
-{{#build_system.maven}}
+{{#build.maven}}
 ### Maven
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-{{/build_system.maven}}
+{{/build.maven}}
 
+{{#swagger.value}}
 ### Generated swagger
 src/main/resources/static/docs/swagger.yaml
+{{/swagger.value}}
 
 ### Eclipse ###
 .settings/
