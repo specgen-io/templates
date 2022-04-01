@@ -45,12 +45,15 @@ args:
       specgen:
         type: string
         description: specgen version
+        noinput: true
         default: 2.1.1591
       springfox:
         type: string
         description: springfox version
+        noinput: true
         default: 3.0.0
       spring_boot:
         type: string
         description: spring boot version
+        noinput: true
         default: 2.5.5
