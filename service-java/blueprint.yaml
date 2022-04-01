@@ -1,7 +1,7 @@
 blueprint: 0
 name: service-java
 title: Specgen Java Service
-roots: [common, build, src]
+rename: {"gitignore": ".gitignore"}
 args:
   project_name:
     type: string
