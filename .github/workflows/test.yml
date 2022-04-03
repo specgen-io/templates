@@ -1,0 +1,13 @@
+name: Build and Test
+on: [push, workflow_dispatch]
+jobs:
+  test-service-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get rendr
+        run: |
+          curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/latest/rendr_linux_amd64.zip"
+          unzip -o rendr_linux_amd64.zip
+          ./rendr -help
