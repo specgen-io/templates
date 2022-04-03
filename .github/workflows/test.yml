@@ -19,7 +19,7 @@ jobs:
 
       - name: Test service-java
         run: |
-          ./rendr -set build=maven -set server=spring -set jsonlib=jackson -out output file:///. service-java
+          ./rendr -set build=maven -set server=spring -set jsonlib=jackson -noinput -out output file:///. service-java
           cd output
           chmod +x mvnw
           ./mvnw compile
