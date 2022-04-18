@@ -76,6 +76,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <jsonlib>{{jsonlib.value}}</jsonlib>
                     <specFile>${project.basedir}/spec.yaml</specFile>
                     <packageName>{{package_name.value}}</packageName>
                     <server>{{server.value}}</server>
