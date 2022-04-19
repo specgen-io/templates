@@ -2,7 +2,7 @@ plugins {
     id("java")
     id("org.springframework.boot") version "{{versions.spring_boot.value}}"
     id("io.spring.dependency-management") version "{{versions.spring_dependency.value}}"
-    id("io.specgen.gradle")
+    id("io.specgen.gradle") version "{{versions.specgen.value}}"
 }
 
 group = "{{group_id.value}}"
@@ -36,7 +36,7 @@ specgen {
         jsonlib.set("{{jsonlib.value}}")
         packageName.set("{{package_name.value}}")
         server.set("{{server.value}}")
-        specFile.set(file("../spec.yaml"))
+        specFile.set(file("spec.yaml"))
         servicesPath.set(file("src/main/java"))
         {{#swagger.value}}
         swaggerPath.set(file("src/main/resources/static/docs/swagger.yaml"))
