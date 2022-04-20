@@ -12,6 +12,11 @@ args:
     description: build system
     values: [maven, gradle]
     default: maven
+  build_script:
+    type: string
+    description: gradle build script language
+    values: [kotlin, groovy]
+    default: kotlin
   group_id:
     type: string
     description: project group id

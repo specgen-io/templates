@@ -21,7 +21,6 @@ dependencies {
     implementation("com.squareup.moshi:moshi-adapters:{{versions.moshi.value}}")
     implementation("com.squareup.moshi:moshi-kotlin:{{versions.moshi.value}}")
     {{/jsonlib.moshi}}
-    implementation("jakarta.annotation:jakarta.annotation-api:{{versions.jakarta.value}}")
     {{#swagger.value}}
     implementation("io.springfox:springfox-boot-starter:{{versions.springfox.value}}")
     {{/swagger.value}}
