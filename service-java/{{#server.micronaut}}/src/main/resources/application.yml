@@ -1,0 +1,15 @@
+micronaut:
+  application:
+    name: {{project_name.value}}
+  server:
+    port: 8081
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:static/docs
+        mapping: /docs/**
+
+netty:
+  default:
+    allocator:
+      max-order: 3

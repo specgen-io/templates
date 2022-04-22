@@ -1,7 +1,12 @@
 plugins {
     id("java")
+    {{#server.spring}}
     id("org.springframework.boot") version "{{versions.spring_boot.value}}"
     id("io.spring.dependency-management") version "{{versions.spring_dependency.value}}"
+    {{/server.spring}}
+    {{#server.micronaut}}
+    id("io.micronaut.application") version "{{versions.micronaut_application.value}}"
+    {{/server.micronaut}}
     id("io.specgen.gradle") version "{{versions.specgen.value}}"
 }
 
@@ -13,18 +18,37 @@ repositories {
 }
 
 dependencies {
+    {{#server.spring}}
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    {{#swagger.value}}
+    implementation("io.springfox:springfox-boot-starter:{{versions.springfox.value}}")
+    {{/swagger.value}}
+    {{/server.spring}}
+    {{#server.micronaut}}
+    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    runtimeOnly("org.slf4j:slf4j-simple")
+    {{#jsonlib.jackson}}
+    implementation("io.micronaut:micronaut-jackson-databind")
+    {{/jsonlib.jackson}}
+    {{#swagger.value}}
+    implementation("io.swagger.core.v3:swagger-annotations")
+    {{/swagger.value}}
+    {{/server.micronaut}}
     implementation("com.google.code.findbugs:jsr305:{{versions.jsr305.value}}")
     {{#jsonlib.moshi}}
     implementation("com.squareup.moshi:moshi:{{versions.moshi.value}}")
     implementation("com.squareup.moshi:moshi-adapters:{{versions.moshi.value}}")
-    implementation("com.squareup.moshi:moshi-kotlin:{{versions.moshi.value}}")
     {{/jsonlib.moshi}}
-    {{#swagger.value}}
-    implementation("io.springfox:springfox-boot-starter:{{versions.springfox.value}}")
-    {{/swagger.value}}
 }
+
+{{#server.micronaut}}
+application {
+    mainClass.set("{{package_name.value}}.{{main_class.value}}")
+}
+{{/server.micronaut}}
 
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
@@ -42,3 +66,15 @@ specgen {
         {{/swagger.value}}
     }
 }
+
+{{#server.micronaut}}
+graalvmNative.toolchainDetection.set(false)
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("{{package_name.value}}.*")
+    }
+}
+{{/server.micronaut}}
