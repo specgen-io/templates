@@ -8,6 +8,9 @@ micronaut:
       swagger:
         paths: classpath:static/docs
         mapping: /docs/**
+      swagger-ui:
+        paths: classpath:static/docs/swagger-ui
+        mapping: /swagger-ui/**
 
 netty:
   default:
