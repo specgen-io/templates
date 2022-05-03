@@ -1,6 +1,10 @@
 blueprint: 0
 name: service-java
 title: Specgen Java Service
+executables: 
+  - "{{#build.maven}}/mvnw"
+  - "{{#build.gradle-kotlin}}/gradlew"
+  - "{{#build.gradle-groovy}}/gradlew"
 rename: {"gitignore": ".gitignore"}
 args:
   project_name:
