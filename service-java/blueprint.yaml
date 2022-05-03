@@ -1,6 +1,10 @@
 blueprint: 0
 name: service-java
 title: Specgen Java Service
+executables: 
+  - "{{#build.maven}}/mvnw"
+  - "{{#build.gradle-kotlin}}/gradlew"
+  - "{{#build.gradle-groovy}}/gradlew"
 rename: {"gitignore": ".gitignore"}
 args:
   project_name:
@@ -10,7 +14,7 @@ args:
   build:
     type: string
     description: build system
-    values: [maven, gradle]
+    values: [maven, gradle-kotlin, gradle-groovy]
     default: maven
   group_id:
     type: string
@@ -46,7 +50,7 @@ args:
         type: string
         description: specgen version
         noinput: true
-        default: 2.1.1591
+        default: 2.1.1638
       springfox:
         type: string
         description: springfox version
@@ -57,3 +61,33 @@ args:
         description: spring boot version
         noinput: true
         default: 2.5.5
+      spring_dependency:
+        type: string
+        description: spring dependency management plugin version
+        noinput: true
+        default: 1.0.11.RELEASE 
+      micronaut:
+        type: string
+        description: micronaut version
+        noinput: true
+        default: 3.4.2
+      micronaut_application:
+        type: string
+        description: micronaut application plugin version
+        noinput: true
+        default: 3.3.2  
+      jsr305:
+        type: string
+        description: jsr305 version
+        noinput: true
+        default: 3.0.2
+      jakarta:
+        type: string
+        description: jakarta annotation version
+        noinput: true
+        default: 2.1.0  
+      moshi:
+        type: string
+        description: moshi version
+        noinput: true
+        default: 1.13.0
