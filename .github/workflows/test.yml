@@ -22,4 +22,4 @@ jobs:
         run: |
           ./rendr render -set build=maven -set server=spring -set jsonlib=jackson -set versions.specgen=2.1.1559 -noinput -out output file:///. service-java
           cd output
-          ./mvnw compile
+          $(./rendr build output)
