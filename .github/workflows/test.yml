@@ -5,6 +5,7 @@ jobs:
     strategy:
       matrix:
         build: [maven, gradle-groovy, gradle-kotlin]
+        server: [spring, micronaut]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,6 +24,6 @@ jobs:
 
       - name: Test service-java
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set server=spring -set jsonlib=jackson -set versions.specgen=2.1.1638 -noinput -out output file:///. service-java
+          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=jackson -set versions.specgen=2.1.1638 -noinput -out output file:///. service-java
           cd output
           $(../rendr build .)
