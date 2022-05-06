@@ -6,6 +6,7 @@ jobs:
       matrix:
         build: [maven, gradle-groovy, gradle-kotlin]
         server: [spring, micronaut]
+        jsonlib: [jackson, moshi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,7 +15,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '11'
-          cache: 'maven'
 
       - name: Get rendr
         run: |
@@ -24,6 +24,6 @@ jobs:
 
       - name: Test service-java
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=jackson -set versions.specgen=2.1.1638 -noinput -out output file:///. service-java
+          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1638 -noinput -out output file:///. service-java
           cd output
           $(../rendr build .)
