@@ -1,4 +1,4 @@
-package {{package_name.value}};
+package {{package.value}};
 
 import org.springframework.context.annotation.*;
 import springfox.documentation.builders.*;

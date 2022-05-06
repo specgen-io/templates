@@ -18,8 +18,8 @@
         {{/server.micronaut}}
     </parent>
 
-    <groupId>{{group_id.value}}</groupId>
-    <artifactId>{{project_name.value}}</artifactId>
+    <groupId>{{groupid.value}}</groupId>
+    <artifactId>{{project.value}}</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -39,7 +39,7 @@
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
         <micronaut.version>{{versions.micronaut.value}}</micronaut.version>
-        <exec.mainClass>{{package_name.value}}.{{main_class.value}}</exec.mainClass>
+        <exec.mainClass>{{package.value}}.{{mainclass.value}}</exec.mainClass>
         <micronaut.runtime>netty</micronaut.runtime>
         {{/server.micronaut}}
     </properties>
@@ -169,8 +169,8 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <arg>-Amicronaut.processing.group={{group_id.value}}</arg>
-                        <arg>-Amicronaut.processing.module={{project_name.value}}</arg>
+                        <arg>-Amicronaut.processing.group={{groupid.value}}</arg>
+                        <arg>-Amicronaut.processing.module={{project.value}}</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
@@ -191,7 +191,7 @@
                     <jsonlib>{{jsonlib.value}}</jsonlib>
                     {{/server.micronaut}}
                     <specFile>${project.basedir}/spec.yaml</specFile>
-                    <packageName>{{package_name.value}}</packageName>
+                    <packageName>{{package.value}}</packageName>
                     <server>{{server.value}}</server>
                     {{#swagger.value}}
                     <swaggerPath>src/main/resources/static/docs/swagger.yaml</swaggerPath>

@@ -1,5 +1,5 @@
 spec: 2.1                    #  Meta information
-name: {{project_name.value}}
+name: {{project.value}}
 version: 1
 
 http:                        #  HTTP Endpoints

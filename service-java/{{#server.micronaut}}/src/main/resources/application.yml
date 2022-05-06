@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: {{project_name.value}}
+    name: {{project.value}}
   server:
     port: 8081
   router:

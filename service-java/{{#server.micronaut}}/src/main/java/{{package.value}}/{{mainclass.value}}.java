@@ -1,4 +1,4 @@
-package {{package_name.value}};
+package {{package.value}};
 
 import io.micronaut.runtime.Micronaut;
 {{#swagger.value}}
@@ -9,14 +9,14 @@ import io.swagger.v3.oas.annotations.info.*;
 {{#swagger.value}}
 @OpenAPIDefinition(
 	info = @Info(
-		title = "{{project_name.value}}",
+		title = "{{project.value}}",
 		version = "1"
 	)
 )
 {{/swagger.value}}
-public class {{main_class.value}} {
+public class {{mainclass.value}} {
 
 	public static void main(String[] args) {
-		Micronaut.run({{main_class.value}}.class, args);
+		Micronaut.run({{mainclass.value}}.class, args);
 	}
 }

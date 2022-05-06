@@ -1,1 +1,1 @@
-rootProject.name = "{{project_name.value}}"
+rootProject.name = "{{project.value}}"

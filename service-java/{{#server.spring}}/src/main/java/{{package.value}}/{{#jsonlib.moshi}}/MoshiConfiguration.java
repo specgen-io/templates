@@ -1,8 +1,8 @@
-package {{package_name.value}};
+package {{package.value}};
 
 import com.squareup.moshi.Moshi;
 import org.springframework.context.annotation.*;
-import {{package_name.value}}.json.Json;
+import {{package.value}}.json.Json;
 
 @Configuration
 public class MoshiConfiguration {

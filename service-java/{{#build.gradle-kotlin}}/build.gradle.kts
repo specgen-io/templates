@@ -10,7 +10,7 @@ plugins {
     id("io.specgen.gradle") version "{{versions.specgen.value}}"
 }
 
-group = "{{group_id.value}}"
+group = "{{groupid.value}}"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -44,7 +44,7 @@ dependencies {
 
 {{#server.micronaut}}
 application {
-    mainClass.set("{{package_name.value}}.{{main_class.value}}")
+    mainClass.set("{{package.value}}.{{mainclass.value}}")
 }
 {{/server.micronaut}}
 
@@ -57,7 +57,7 @@ specgen {
         {{^server.micronaut}}
         jsonlib.set("{{jsonlib.value}}")
         {{/server.micronaut}}
-        packageName.set("{{package_name.value}}")
+        packageName.set("{{package.value}}")
         server.set("{{server.value}}")
         specFile.set(file("spec.yaml"))
         servicesPath.set(file("src/main/java"))
@@ -74,7 +74,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("{{package_name.value}}.*")
+        annotations("{{package.value}}.*")
     }
 }
 {{/server.micronaut}}
