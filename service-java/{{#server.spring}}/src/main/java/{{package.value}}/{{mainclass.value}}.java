@@ -1,4 +1,4 @@
-package {{package_name.value}};
+package {{package.value}};
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +10,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 {{/swagger.value}}
 @SpringBootApplication
-public class {{main_class.value}} {
+public class {{mainclass.value}} {
 
 	public static void main(String[] args) {
-		SpringApplication.run({{main_class.value}}.class, args);
+		SpringApplication.run({{mainclass.value}}.class, args);
 	}
 }

@@ -1,10 +1,10 @@
-package {{package_name.value}};
+package {{package.value}};
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.context.annotation.*;
 import io.micronaut.jackson.ObjectMapperFactory;
 import jakarta.inject.Singleton;
-import {{package_name.value}}.json.Json;
+import {{package.value}}.json.Json;
 
 @Factory
 @Replaces(ObjectMapperFactory.class)
