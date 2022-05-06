@@ -30,18 +30,18 @@
         <java.version>11</java.version>
         <spring.version>{{versions.spring_boot.value}}</spring.version>
         <springfox.version>{{versions.springfox.value}}</springfox.version>
+        {{#jsonlib.moshi}}
+        <moshi.version>{{versions.moshi.value}}</moshi.version>
+        <jsr305.version>{{versions.jsr305.value}}</jsr305.version>
+        {{/jsonlib.moshi}}
         {{/server.spring}}
         {{#server.micronaut}}
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
         <micronaut.version>{{versions.micronaut.value}}</micronaut.version>
-        <exec.mainClass>test_service.Application</exec.mainClass>
+        <exec.mainClass>{{package_name.value}}.{{main_class.value}}</exec.mainClass>
         <micronaut.runtime>netty</micronaut.runtime>
         {{/server.micronaut}}
-        {{#jsonlib.moshi}}
-        <moshi.version>{{versions.moshi.value}}</moshi.version>
-        <jsr305.version>{{versions.jsr305.value}}</jsr305.version>
-        {{/jsonlib.moshi}}
     </properties>
 
     <dependencies>
@@ -59,6 +59,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        {{#jsonlib.moshi}}
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi-adapters</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+          </dependency>
+        {{/jsonlib.moshi}}
         {{#swagger.value}}
         <dependency>
             <groupId>io.springfox</groupId>
@@ -93,13 +110,11 @@
             <artifactId>micronaut-http-server-netty</artifactId>
             <scope>compile</scope>
         </dependency>
-        {{#jsonlib.jackson}}
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-jackson-databind</artifactId>
             <scope>compile</scope>
         </dependency>
-        {{/jsonlib.jackson}}
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-runtime</artifactId>
@@ -123,23 +138,6 @@
         </dependency>
         {{/swagger.value}}
         {{/server.micronaut}}
-        {{#jsonlib.moshi}}
-        <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi</artifactId>
-            <version>${moshi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi-adapters</artifactId>
-            <version>${moshi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>${jsr305.version}</version>
-          </dependency>
-        {{/jsonlib.moshi}}
     </dependencies>
 
     <build>
@@ -189,7 +187,9 @@
                     </execution>
                 </executions>
                 <configuration>
+                    {{^server.micronaut}}
                     <jsonlib>{{jsonlib.value}}</jsonlib>
+                    {{/server.micronaut}}
                     <specFile>${project.basedir}/spec.yaml</specFile>
                     <packageName>{{package_name.value}}</packageName>
                     <server>{{server.value}}</server>
