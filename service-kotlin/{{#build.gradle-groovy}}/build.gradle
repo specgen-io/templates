@@ -1,11 +1,11 @@
 plugins {
-    id('org.jetbrains.kotlin.jvm') version('{{versions.kotlin.value}}')
-    id('org.jetbrains.kotlin.kapt') version('{{versions.kotlin.value}}')
-    id('org.jetbrains.kotlin.plugin.allopen') version('{{versions.kotlin.value}}')
+    id('org.jetbrains.kotlin.jvm') version '{{versions.kotlin.value}}'
+    id('org.jetbrains.kotlin.kapt') version '{{versions.kotlin.value}}'
+    id('org.jetbrains.kotlin.plugin.allopen') version '{{versions.kotlin.value}}'
     {{#server.micronaut}}
-    id('io.micronaut.application') version('{{versions.micronaut_application.value}}')
+    id('io.micronaut.application') version '{{versions.micronaut_application.value}}'
     {{/server.micronaut}}
-    id('io.specgen.gradle') version('{{versions.specgen.value}}')
+    id('io.specgen.gradle') version '{{versions.specgen.value}}'
 }
 
 group = '{{groupid.value}}'
@@ -72,7 +72,6 @@ specgen {
 graalvmNative.toolchainDetection = false
 micronaut {
     runtime('netty')
-    testRuntime('junit5')
     processing {
         incremental(true)
         annotations('{{package.value}}.*')
