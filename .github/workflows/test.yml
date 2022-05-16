@@ -2,6 +2,10 @@ name: Test templates
 on: [push, workflow_dispatch]
 jobs:
   service-java:
+    on:
+      push:
+        paths:
+          - service-java/**
     strategy:
       matrix:
         build: [maven, gradle-groovy, gradle-kotlin]
