@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - service-java/**
+      - .github/service-java.yml
   workflow_dispatch: {}
 jobs:
   service-java:
