@@ -3,12 +3,13 @@ on:
   push:
     paths:
       - service-kotlin/**
+      - .github/service-kotlin.yml
   workflow_dispatch: {}
 jobs:
   service-kotlin:
     strategy:
       matrix:
-        build: [maven, gradle-groovy, gradle-kotlin]
+        build: [gradle-groovy, gradle-kotlin]
         server: [micronaut]
     runs-on: ubuntu-latest
     steps:
