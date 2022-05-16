@@ -33,9 +33,11 @@ dependencies {
     {{/server.micronaut}}
 }
 
+{{#server.micronaut}}
 application {
     mainClass.set("{{package.value}}.{{mainclass.value}}Kt")
 }
+{{/server.micronaut}}
 
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
@@ -70,7 +72,6 @@ specgen {
 graalvmNative.toolchainDetection.set(false)
 micronaut {
     runtime("netty")
-    testRuntime("junit5")
     processing {
         incremental(true)
         annotations("{{package.value}}.*")
