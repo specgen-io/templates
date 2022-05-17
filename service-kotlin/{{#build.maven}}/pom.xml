@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        {{#server.micronaut}}
+        <groupId>io.micronaut</groupId>
+        <artifactId>micronaut-parent</artifactId>
+        <version>{{versions.micronaut.value}}</version>
+        {{/server.micronaut}}
+    </parent>
+
+    <groupId>{{groupid.value}}</groupId>
+    <artifactId>{{project.value}}</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <specgen.version>{{versions.specgen.value}}</specgen.version>
+        {{#server.micronaut}}
+        <jdk.version>11</jdk.version>
+        <release.version>11</release.version>
+        <micronaut.version>{{versions.micronaut.value}}</micronaut.version>
+        <exec.mainClass>{{package.value}}.{{mainclass.value}}</exec.mainClass>
+        <micronaut.runtime>netty</micronaut.runtime>
+        {{/server.micronaut}}
+    </properties>
+
+    <dependencies>
+        {{#server.micronaut}}
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-inject</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-validation</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-server-netty</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-jackson-databind</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-runtime</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        {{#swagger.value}}
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        {{/swagger.value}}
+        {{/server.micronaut}}
+    </dependencies>
+
+    <build>
+        <plugins>
+            {{#server.micronaut}}
+            <plugin>
+                <groupId>io.micronaut.build</groupId>
+                <artifactId>micronaut-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Uncomment to enable incremental compilation -->
+                    <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+
+                    <annotationProcessorPaths combine.children="append">
+                        <path>
+                            <groupId>io.micronaut</groupId>
+                            <artifactId>micronaut-http-validation</artifactId>
+                            <version>${micronaut.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Amicronaut.processing.group={{groupid.value}}</arg>
+                        <arg>-Amicronaut.processing.module={{project.value}}</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            {{/server.micronaut}}
+            <plugin>
+                <groupId>io.specgen</groupId>
+                <artifactId>specgen-maven-plugin</artifactId>
+                <version>${specgen.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>service-java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    {{^server.micronaut}}
+                    <jsonlib>{{jsonlib.value}}</jsonlib>
+                    {{/server.micronaut}}
+                    <specFile>${project.basedir}/spec.yaml</specFile>
+                    <packageName>{{package.value}}</packageName>
+                    <server>{{server.value}}</server>
+                    {{#swagger.value}}
+                    <swaggerPath>src/main/resources/static/docs/swagger.yaml</swaggerPath>
+                    {{/swagger.value}}
+                    <servicesPath>src/main/java</servicesPath>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

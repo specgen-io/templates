@@ -41,12 +41,15 @@ args:
     type: group
     noinput: true
     args:
-      kotlin:
-        type: string
-        default: 1.6.10    
       specgen:
         type: string
         default: 2.1.1638
+      kotlin:
+        type: string
+        default: 1.6.10
+      kotlin:
+        type: string
+        default: 11
       micronaut:
         type: string
         default: 3.4.2
