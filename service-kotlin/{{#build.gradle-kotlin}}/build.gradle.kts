@@ -40,18 +40,18 @@ application {
 {{/server.micronaut}}
 
 java {
-    sourceCompatibility = JavaVersion.toVersion("11")
+    sourceCompatibility = JavaVersion.toVersion("{{versions.java.value}}")
 }
 
 tasks {
     compileKotlin {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "{{versions.java.value}}"
         }
     }
     compileTestKotlin {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "{{versions.java.value}}"
         }
     }
 }
