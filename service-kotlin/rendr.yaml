@@ -47,7 +47,7 @@ args:
       kotlin:
         type: string
         default: 1.6.10
-      kotlin:
+      java:
         type: string
         default: 11
       micronaut:
