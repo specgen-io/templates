@@ -5,8 +5,13 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 {{/build.maven}}
-
+{{^build.maven}}
+### Gradle
+.gradle/
+build/
+{{/build.maven}}
 {{#swagger.value}}
+
 ### Generated swagger
 src/main/resources/static/docs/swagger.yaml
 {{/swagger.value}}
