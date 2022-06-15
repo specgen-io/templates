@@ -28,6 +28,6 @@ jobs:
 
       - name: Test service-kotlin
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set versions.specgen=2.1.1742 -noinput -out output file:///. service-kotlin
+          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set versions.specgen=2.1.1720 -noinput -out output file:///. service-kotlin
           cd output
           $(../rendr build .)
