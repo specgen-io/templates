@@ -3,7 +3,7 @@ name: client-java
 title: Specgen Java Client
 executables: 
   - "{{#build.maven}}/mvn"
-  # - "{{#build.gradle-kotlin}}/gradlew"
+  - "{{#build.gradle-kotlin}}/gradlew"
   # - "{{#build.gradle-groovy}}/gradlew"
 rename: {"gitignore": ".gitignore"}
 args:
@@ -15,7 +15,7 @@ args:
     type: string
     description: build system
     # values: [maven, gradle-kotlin, gradle-groovy]
-    values: [maven]
+    values: [maven, gradle-kotlin]
     default: maven
   groupid:
     type: string
