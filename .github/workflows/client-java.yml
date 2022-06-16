@@ -9,7 +9,7 @@ jobs:
   client-java:
     strategy:
       matrix:
-        build: [maven, gradle-kotlin]
+        build: [maven, gradle-kotlin, gradle-groovy]
         client: [okhttp]
         jsonlib: [jackson, moshi]
     runs-on: ubuntu-latest
