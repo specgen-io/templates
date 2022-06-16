@@ -22,7 +22,7 @@ dependencies {
     implementation("com.squareup.moshi:moshi-adapters:{{versions.moshi.value}}")
     implementation("com.google.code.findbugs:jsr305:{{versions.jsr305.value}}")
     {{/jsonlib.moshi}}
-    implementation("com.squareup.okhttp3:okhttp:{{versions.okhttp3.value}}")
+    implementation("com.squareup.okhttp3:okhttp:{{versions.okhttp.value}}")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:{{versions.log4j.value}}")
 }
 
