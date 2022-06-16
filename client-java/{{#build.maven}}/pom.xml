@@ -17,6 +17,7 @@
         {{/jsonlib.jackson}}
         {{#jsonlib.moshi}}
         <moshi.version>{{versions.moshi.value}}</moshi.version>
+        <jsr305.version>{{versions.jsr305.value}}</jsr305.version>
         {{/jsonlib.moshi}}
         <okhttp.version>{{versions.okhttp.value}}</okhttp.version>
         <log4j.version>{{versions.log4j.value}}</log4j.version>
