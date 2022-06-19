@@ -9,7 +9,7 @@ jobs:
   service-kotlin:
     strategy:
       matrix:
-        build: [gradle-groovy, gradle-kotlin]
+        build: [maven, gradle-groovy, gradle-kotlin]
         server: [micronaut]
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +28,6 @@ jobs:
 
       - name: Test service-kotlin
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set versions.specgen=2.1.1638 -noinput -out output file:///. service-kotlin
+          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set versions.specgen=2.1.1720 -noinput -out output file:///. service-kotlin
           cd output
           $(../rendr build .)
