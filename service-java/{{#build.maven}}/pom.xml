@@ -39,8 +39,8 @@
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
         <micronaut.version>{{versions.micronaut.value}}</micronaut.version>
-        <exec.mainClass>{{package.value}}.{{mainclass.value}}</exec.mainClass>
         <micronaut.runtime>netty</micronaut.runtime>
+        <exec.mainClass>{{package.value}}.{{mainclass.value}}</exec.mainClass>
         {{/server.micronaut}}
     </properties>
 
