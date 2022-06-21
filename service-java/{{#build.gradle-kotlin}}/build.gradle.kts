@@ -49,7 +49,7 @@ application {
 {{/server.micronaut}}
 
 java {
-    sourceCompatibility = JavaVersion.toVersion("11")
+    sourceCompatibility = JavaVersion.toVersion("{{versions.java.value}}")
 }
 
 specgen {
