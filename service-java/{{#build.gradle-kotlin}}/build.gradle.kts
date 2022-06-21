@@ -21,11 +21,6 @@ dependencies {
     {{#server.spring}}
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    {{#jsonlib.moshi}}
-    implementation("com.google.code.findbugs:jsr305:{{versions.jsr305.value}}")
-    implementation("com.squareup.moshi:moshi:{{versions.moshi.value}}")
-    implementation("com.squareup.moshi:moshi-adapters:{{versions.moshi.value}}")
-    {{/jsonlib.moshi}}
     {{#swagger.value}}
     implementation("io.springfox:springfox-boot-starter:{{versions.springfox.value}}")
     {{/swagger.value}}
@@ -35,11 +30,18 @@ dependencies {
     implementation("io.micronaut:micronaut-runtime")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("org.slf4j:slf4j-simple")
+    {{#jsonlib.jackson}}
     implementation("io.micronaut:micronaut-jackson-databind")
+    {{/jsonlib.jackson}}
     {{#swagger.value}}
     implementation("io.swagger.core.v3:swagger-annotations")
     {{/swagger.value}}
     {{/server.micronaut}}
+    {{#jsonlib.moshi}}
+    implementation("com.google.code.findbugs:jsr305:{{versions.jsr305.value}}")
+    implementation("com.squareup.moshi:moshi:{{versions.moshi.value}}")
+    implementation("com.squareup.moshi:moshi-adapters:{{versions.moshi.value}}")
+    {{/jsonlib.moshi}}
 }
 
 {{#server.micronaut}}
@@ -49,14 +51,12 @@ application {
 {{/server.micronaut}}
 
 java {
-    sourceCompatibility = JavaVersion.toVersion("11")
+    sourceCompatibility = JavaVersion.toVersion("{{versions.java.value}}")
 }
 
 specgen {
     serviceJava {
-        {{^server.micronaut}}
         jsonlib.set("{{jsonlib.value}}")
-        {{/server.micronaut}}
         packageName.set("{{package.value}}")
         server.set("{{server.value}}")
         specFile.set(file("spec.yaml"))
@@ -71,7 +71,6 @@ specgen {
 graalvmNative.toolchainDetection.set(false)
 micronaut {
     runtime("netty")
-    testRuntime("junit5")
     processing {
         incremental(true)
         annotations("{{package.value}}.*")

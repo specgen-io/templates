@@ -26,7 +26,6 @@ args:
     values: [spring, micronaut]
     default: spring
   jsonlib:
-    condition: "{{^server.micronaut}}"
     type: string
     description: JSON library
     values: [jackson, moshi]
@@ -49,7 +48,10 @@ args:
     args:
       specgen:
         type: string
-        default: 2.1.1638
+        default: 2.1.1720
+      java:
+        type: string
+        default: 11  
       springfox:
         type: string
         default: 3.0.0

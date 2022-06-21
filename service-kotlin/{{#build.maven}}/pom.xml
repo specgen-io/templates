@@ -27,6 +27,10 @@
         <micronaut.runtime>netty</micronaut.runtime>
         <kotlinVersion>{{versions.kotlin.value}}</kotlinVersion>
         <exec.mainClass>{{package.value}}.{{mainclass.value}}Kt</exec.mainClass>
+        {{#jsonlib.moshi}}
+        <moshi.version>{{versions.moshi.value}}</moshi.version>
+        <jsr305.version>{{versions.jsr305.value}}</jsr305.version>
+        {{/jsonlib.moshi}}
         {{/server.micronaut}}
     </properties>
 
@@ -60,16 +64,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-jackson-databind</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-kotlin</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>io.micronaut.kotlin</groupId>
             <artifactId>micronaut-kotlin-runtime</artifactId>
             <scope>compile</scope>
@@ -79,6 +73,35 @@
             <artifactId>micronaut-runtime</artifactId>
             <scope>compile</scope>
         </dependency>
+        {{#jsonlib.jackson}}
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-jackson-databind</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        {{/jsonlib.jackson}}
+        {{#jsonlib.moshi}}
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi-adapters</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+          </dependency>
+        {{/jsonlib.moshi}}
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
@@ -194,9 +217,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    {{^server.micronaut}}
                     <jsonlib>{{jsonlib.value}}</jsonlib>
-                    {{/server.micronaut}}
                     <specFile>${project.basedir}/spec.yaml</specFile>
                     <packageName>{{package.value}}</packageName>
                     <server>{{server.value}}</server>

@@ -11,6 +11,7 @@ jobs:
       matrix:
         build: [maven, gradle-groovy, gradle-kotlin]
         server: [micronaut]
+        jsonlib: [jackson, moshi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
