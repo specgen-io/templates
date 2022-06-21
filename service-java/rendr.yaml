@@ -26,7 +26,6 @@ args:
     values: [spring, micronaut]
     default: spring
   jsonlib:
-    condition: "{{^server.micronaut}}"
     type: string
     description: JSON library
     values: [jackson, moshi]
