@@ -32,7 +32,7 @@ args:
     default: jackson
   package:
     type: string
-    description: java package name
+    description: package name
     default: theservice
   mainclass:
     type: string
