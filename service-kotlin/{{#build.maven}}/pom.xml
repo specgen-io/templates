@@ -19,13 +19,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kotlin.code.style>official</kotlin.code.style>
+        <kotlin.version>{{versions.kotlin.value}}</kotlin.version>
         <specgen.version>{{versions.specgen.value}}</specgen.version>
-        {{#server.micronaut}}
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
+        {{#server.micronaut}}
         <micronaut.version>{{versions.micronaut.value}}</micronaut.version>
         <micronaut.runtime>netty</micronaut.runtime>
-        <kotlinVersion>{{versions.kotlin.value}}</kotlinVersion>
         <exec.mainClass>{{package.value}}.{{mainclass.value}}Kt</exec.mainClass>
         {{#jsonlib.moshi}}
         <moshi.version>{{versions.moshi.value}}</moshi.version>
@@ -38,13 +39,13 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
-            <version>${kotlinVersion}</version>
+            <version>${kotlin.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlinVersion}</version>
+            <version>${kotlin.version}</version>
             <scope>compile</scope>
         </dependency>
         {{#server.micronaut}}
@@ -130,8 +131,8 @@
                 <artifactId>micronaut-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlinVersion}</version>
                 <configuration>
                     <jvmTarget>${jdk.version}</jvmTarget>
