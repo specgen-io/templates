@@ -21,9 +21,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.version>{{versions.kotlin.value}}</kotlin.version>
+        <java.version>{{versions.java.value}}</java.version>
         <specgen.version>{{versions.specgen.value}}</specgen.version>
-        <jdk.version>11</jdk.version>
-        <release.version>11</release.version>
         {{#server.micronaut}}
         <micronaut.version>{{versions.micronaut.value}}</micronaut.version>
         <micronaut.runtime>netty</micronaut.runtime>
@@ -133,7 +132,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlinVersion}</version>
+                <version>${kotlin.version}</version>
                 <configuration>
                     <jvmTarget>${jdk.version}</jvmTarget>
                     <compilerPlugins>
@@ -179,7 +178,7 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
-                        <version>${kotlinVersion}</version>
+                        <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -187,23 +186,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <proc>none</proc>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
+                    <release>${java.version}</release>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>java-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             {{/server.micronaut}}
             <plugin>
