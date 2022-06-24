@@ -1,0 +1,32 @@
+name: service-ts
+on:
+  push:
+    paths:
+      - service-ts/**
+      - .github/service-ts.yml
+  workflow_dispatch: {}
+jobs:
+  service-ts:
+    strategy:
+      matrix:
+        server: [express, koa]
+        validation: [superstruct, iots]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Get rendr
+        run: |
+          curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/latest/rendr_linux_amd64.zip"
+          unzip -o rendr_linux_amd64.zip
+          ./rendr help
+
+      - name: Test service-ts
+        run: |
+          ./rendr render -set server=${{ matrix.server }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1720 -noinput -out output file:///. service-ts
+          cd output
+          $(../rendr build .)
