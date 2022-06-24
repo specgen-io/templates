@@ -1,10 +1,6 @@
 rendr: 0
 name: service-ts
 title: Specgen TypeScript Service
-executables: 
-  # - "{{#build.maven}}/mvnw"
-  # - "{{#build.gradle-kotlin}}/gradlew"
-  # - "{{#build.gradle-groovy}}/gradlew"
 rename: {"gitignore": ".gitignore"}
 args:
   project:
