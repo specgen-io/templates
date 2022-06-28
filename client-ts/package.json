@@ -1,0 +1,48 @@
+{
+  "name": "{{project.value}}",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "specgen": "specgen client-ts --client {{client.value}} --validation {{validation.value}} --spec-file spec.yaml --generate-path ./src/spec",
+    {{#client.browser-fetch}}
+    "build": "esbuild ./src/app.ts --bundle --outfile=./dist/app.js && cp ./src/index.html ./dist/index.html",
+    "start": "sirv dist --port 8082 --dev"
+    {{/client.browser-fetch}}
+  },
+  "dependencies": {
+    {{#client.axios}}
+    "axios": "^{{versions.axios.value}}",
+    {{/client.axios}}
+    {{#client.node-fetch}}
+    "node-fetch": "^{{versions.node-fetch.value}}",
+    {{/client.node-fetch}}
+    {{#validation.superstruct}}
+    "superstruct": "^{{versions.superstruct.value}}"
+    {{/validation.superstruct}}
+    {{#validation.iots}}
+    "fp-ts": "^{{versions.fp-ts.value}}",
+    "io-ts": "^{{versions.io-ts.value}}",
+    "io-ts-types": "^{{versions.io-ts-types.value}}",
+    "monocle-ts": "^{{versions.monocle-ts.value}}",
+    "newtype-ts": "^{{versions.newtype-ts.value}}"
+    {{/validation.iots}}
+  },
+  "devDependencies": {
+    "specgen.io": "^{{versions.specgen.value}}",
+    {{#client.browser-fetch}}
+    "@types/node": "^{{versions.node.value}}",
+    "puppeteer": "^{{versions.puppeteer.value}}",
+    "sirv-cli": "^{{versions.sirv-cli.value}}",
+    "ts-node": "^{{versions.ts-node.value}}",
+    "tsm": "^{{versions.tsm.value}}",
+    "uvu": "^{{versions.uvu.value}}",
+    {{/client.browser-fetch}}
+    {{#client.node-fetch}}
+    "ts-node": "^{{versions.ts-node.value}}",
+    "tsm": "^{{versions.tsm.value}}",
+    "uvu": "^{{versions.uvu.value}}",
+    {{/client.node-fetch}}
+    "typescript": "^{{versions.typescript.value}}"
+  }
+}
