@@ -9,7 +9,7 @@ jobs:
   client-ts:
     strategy:
       matrix:
-        client: [axios, browser-fetch, browser-fetch]
+        client: [axios, browser-fetch, node-fetch]
         validation: [superstruct, iots]
     runs-on: ubuntu-latest
     steps:
