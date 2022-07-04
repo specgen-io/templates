@@ -48,7 +48,7 @@ args:
     args:
       specgen:
         type: string
-        default: 2.1.1720
+        default: 2.1.1794
       kotlin:
         type: string
         default: 1.6.10
