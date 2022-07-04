@@ -97,6 +97,11 @@
             <version>${moshi.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi-kotlin</artifactId>
+            <version>${moshi.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>${jsr305.version}</version>
@@ -202,14 +207,14 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jsonlib>{{jsonlib.value}}</jsonlib>
-                    <specFile>${project.basedir}/spec.yaml</specFile>
                     <packageName>{{package.value}}</packageName>
+                    <jsonlib>{{jsonlib.value}}</jsonlib>
                     <server>{{server.value}}</server>
+                    <specFile>${project.basedir}/spec.yaml</specFile>
+                    <servicesPath>src/main/kotlin</servicesPath>
                     {{#swagger.value}}
                     <swaggerPath>src/main/resources/static/docs/swagger.yaml</swaggerPath>
                     {{/swagger.value}}
-                    <servicesPath>src/main/kotlin</servicesPath>
                 </configuration>
             </plugin>
         </plugins>

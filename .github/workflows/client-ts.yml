@@ -1,0 +1,32 @@
+name: client-ts
+on:
+  push:
+    paths:
+      - client-ts/**
+      - .github/client-ts.yml
+  workflow_dispatch: {}
+jobs:
+  client-ts:
+    strategy:
+      matrix:
+        client: [axios, browser-fetch, node-fetch]
+        validation: [superstruct, iots]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Get rendr
+        run: |
+          curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/latest/rendr_linux_amd64.zip"
+          unzip -o rendr_linux_amd64.zip
+          ./rendr help
+
+      - name: Test client-ts
+        run: |
+          ./rendr render -set client=${{ matrix.client }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1720 -noinput -out output file:///. client-ts
+          cd output
+          $(../rendr build .)
