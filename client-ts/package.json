@@ -4,11 +4,11 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "specgen": "specgen client-ts --client {{client.value}} --validation {{validation.value}} --spec-file spec.yaml --generate-path ./src/spec",
     {{#client.browser-fetch}}
     "build": "esbuild ./src/app.ts --bundle --outfile=./dist/app.js && cp ./src/index.html ./dist/index.html",
     "start": "sirv dist --port 8082 --dev"
     {{/client.browser-fetch}}
+    "specgen": "specgen client-ts --client {{client.value}} --validation {{validation.value}} --spec-file spec.yaml --generate-path ./src/spec"
   },
   "dependencies": {
     {{#client.axios}}
