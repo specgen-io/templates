@@ -1,5 +1,6 @@
 name: service-kotlin
 on:
+  workflow_dispatch: {}
   push:
     paths:
       - service-kotlin/**
