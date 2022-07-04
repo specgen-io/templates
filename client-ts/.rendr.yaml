@@ -1,4 +1,6 @@
 build: |
   npm install
   npm run specgen
+  {{#client.browser-fetch}}
   npm run build
+  {{/client.browser-fetch}}

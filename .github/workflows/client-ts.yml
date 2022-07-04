@@ -27,6 +27,6 @@ jobs:
 
       - name: Test client-ts
         run: |
-          ./rendr render -set client=${{ matrix.client }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1720 -noinput -out output file:///. client-ts
+          ./rendr render -set client=${{ matrix.client }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1794 -noinput -out output file:///. client-ts
           cd output
           $(../rendr build .)
