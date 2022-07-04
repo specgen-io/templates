@@ -1,5 +1,6 @@
 name: service-ts
 on:
+  workflow_dispatch: {}
   push:
     paths:
       - service-ts/**
