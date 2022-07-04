@@ -27,6 +27,6 @@ jobs:
 
       - name: Test service-ts
         run: |
-          ./rendr render -set server=${{ matrix.server }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1720 -noinput -out output file:///. service-ts
+          ./rendr render -set server=${{ matrix.server }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1794 -noinput -out output file:///. service-ts
           cd output
           $(../rendr build .)
