@@ -29,6 +29,6 @@ jobs:
 
       - name: Test client-java
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set client=${{ matrix.client }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1720 -noinput -out output file:///. client-java
+          ./rendr render -set build=${{ matrix.build }} -set client=${{ matrix.client }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1794 -noinput -out output file:///. client-java
           cd output
           $(../rendr build .)
