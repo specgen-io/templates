@@ -60,6 +60,7 @@ tasks {
 specgen {
     serviceKotlin {
         packageName.set("{{package.value}}")
+        jsonlib.set("{{jsonlib.value}}")
         server.set("{{server.value}}")
         specFile.set(file("spec.yaml"))
         servicesPath.set(file("src/main/kotlin"))
