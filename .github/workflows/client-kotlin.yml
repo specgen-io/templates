@@ -1,6 +1,5 @@
 name: client-kotlin
 on:
-  workflow_dispatch: {}
   push:
     paths:
       - client-kotlin/**

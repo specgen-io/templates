@@ -1,6 +1,5 @@
 name: client-java
 on:
-  workflow_dispatch: {}
   push:
     paths:
       - client-java/**

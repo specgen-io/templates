@@ -1,6 +1,5 @@
 name: service-java
 on:
-  workflow_dispatch: {}
   push:
     paths:
       - service-java/**
