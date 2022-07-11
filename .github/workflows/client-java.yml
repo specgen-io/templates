@@ -3,7 +3,9 @@ on:
   push:
     paths:
       - client-java/**
-      - .github/client-java.yml
+      - .github/variables/**
+      - .github/actions/**
+      - .github/workflows/client-java.yml
   workflow_dispatch: {}
 jobs:
   client-java:
