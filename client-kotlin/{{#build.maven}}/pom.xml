@@ -106,7 +106,7 @@
             </plugin>
             <plugin>
                 <groupId>io.specgen</groupId>
-                <artifactId>specgen-maven-plugin</artifactId>
+                <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${specgen.version}</version>
                 <executions>
                     <execution>
