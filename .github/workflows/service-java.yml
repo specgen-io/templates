@@ -29,6 +29,6 @@ jobs:
 
       - name: Test service-java
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1794 -noinput -out output file:///. service-java
+          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1812 -noinput -out output file:///. service-java
           cd output
           $(../rendr build .)

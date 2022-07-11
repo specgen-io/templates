@@ -5,7 +5,7 @@ plugins {
     {{#server.micronaut}}
     id 'io.micronaut.application' version '{{versions.micronaut_application.value}}'
     {{/server.micronaut}}
-    id 'io.specgen.gradle' version '{{versions.specgen.value}}'
+    id 'io.specgen.kotlin.gradle' version '{{versions.specgen.value}}'
 }
 
 group = '{{groupid.value}}'

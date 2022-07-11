@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("io.specgen.gradle") version "{{versions.specgen.value}}"
+    id("io.specgen.java.gradle") version "{{versions.specgen.value}}"
 }
 
 group = "{{groupid.value}}"
