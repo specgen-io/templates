@@ -2,8 +2,10 @@ name: service-kotlin
 on:
   push:
     paths:
+      - .github/variables/**
+      - .github/actions/**
+      - .github/workflows/service-kotlin.yml
       - service-kotlin/**
-      - .github/service-kotlin.yml
   workflow_dispatch: {}
 jobs:
   service-kotlin:
@@ -15,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set Environment Variables
+        uses: ./.github/actions/setvars
 
       - uses: actions/setup-java@v3.1.0
         with:
@@ -29,6 +34,6 @@ jobs:
 
       - name: Test service-kotlin
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1812 -noinput -out output file:///. service-kotlin
+          ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-kotlin
           cd output
           $(../rendr build .)

@@ -2,10 +2,10 @@ name: client-java
 on:
   push:
     paths:
-      - client-java/**
       - .github/variables/**
       - .github/actions/**
       - .github/workflows/client-java.yml
+      - client-java/**
   workflow_dispatch: {}
 jobs:
   client-java:
