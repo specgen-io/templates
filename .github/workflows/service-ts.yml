@@ -2,8 +2,10 @@ name: service-ts
 on:
   push:
     paths:
+      - .github/variables/**
+      - .github/actions/**
+      - .github/workflows/service-ts.yml
       - service-ts/**
-      - .github/service-ts.yml
   workflow_dispatch: {}
 jobs:
   service-ts:
@@ -14,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set Environment Variables
+        uses: ./.github/actions/setvars
 
       - uses: actions/setup-node@v3
         with:
@@ -27,6 +32,6 @@ jobs:
 
       - name: Test service-ts
         run: |
-          ./rendr render -set server=${{ matrix.server }} -set validation=${{ matrix.validation }} -set versions.specgen=2.1.1812 -noinput -out output file:///. service-ts
+          ./rendr render -set server=${{ matrix.server }} -set validation=${{ matrix.validation }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-ts
           cd output
           $(../rendr build .)

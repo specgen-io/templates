@@ -2,8 +2,10 @@ name: client-kotlin
 on:
   push:
     paths:
+      - .github/variables/**
+      - .github/actions/**
+      - .github/workflows/client-kotlin.yml
       - client-kotlin/**
-      - .github/client-kotlin.yml
   workflow_dispatch: {}
 jobs:
   client-kotlin:
@@ -15,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set Environment Variables
+        uses: ./.github/actions/setvars
 
       - uses: actions/setup-java@v3.1.0
         with:
@@ -29,6 +34,6 @@ jobs:
 
       - name: Test client-kotlin
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set client=${{ matrix.client }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=2.1.1812 -noinput -out output file:///. client-kotlin
+          ./rendr render -set build=${{ matrix.build }} -set client=${{ matrix.client }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. client-kotlin
           cd output
           $(../rendr build .)
