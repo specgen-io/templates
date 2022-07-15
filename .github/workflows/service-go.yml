@@ -35,7 +35,7 @@ jobs:
           cd output
 
           echo "Splitting build commands"
-          export BUILD_COMMANDS=(../rendr build .)
+          export BUILD_COMMANDS=$(../rendr build .)
 
           echo "Output build commands"
           echo $BUILD_COMMANDS
