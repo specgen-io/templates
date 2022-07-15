@@ -33,9 +33,17 @@ jobs:
         run: |
           ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
           cd output
-          echo "Installing specgen"
-          go install github.com/specgen-io/specgen/v2@v2.1.1814
+
+          echo "Splitting build commands"
+          export BUILD_COMMANDS=(../rendr build .)
+
           echo "Output build commands"
-          ../rendr build .
+          echo $BUILD_COMMANDS
+
+          for BUILD_COMMAND in $BUILD_COMMANDS
+          do
+              echo "Command: $BUILD_COMMAND"
+          done
+
           echo "Run build commands"
           $(../rendr build .)
