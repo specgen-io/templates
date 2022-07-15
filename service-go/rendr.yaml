@@ -1,6 +1,8 @@
 rendr: 0
 name: service-go
 title: Specgen Golang Service
+static:
+  - "{{#swagger.value}}/docs"
 rename: {"gitignore": ".gitignore"}
 args:
   project:
