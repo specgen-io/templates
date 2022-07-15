@@ -1,5 +1,3 @@
 build: |
   go install github.com/specgen-io/specgen/v2@v{{versions.specgen.value}}
   go generate
-  go mod tidy
-  go build
