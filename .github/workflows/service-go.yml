@@ -1,0 +1,36 @@
+name: service-go
+on:
+  push:
+    paths:
+      - .github/variables/**
+      - .github/actions/**
+      - .github/workflows/service-go.yml
+      - service-go/**
+  workflow_dispatch: {}
+jobs:
+  service-go:
+    strategy:
+      matrix:
+        server: [vestigo]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Environment Variables
+        uses: ./.github/actions/setvars
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.18.0'
+
+      - name: Get rendr
+        run: |
+          curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/latest/rendr_linux_amd64.zip"
+          unzip -o rendr_linux_amd64.zip
+          ./rendr help
+
+      - name: Test service-go
+        run: |
+          ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
+          cd output
+          $(../rendr build .)
