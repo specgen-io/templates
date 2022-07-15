@@ -33,7 +33,7 @@ jobs:
         run: |
           ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
           cd output
-          go install github.com/specgen-io/specgen/v2@v2.1.1814
-          go generate
-          go mod tidy
-          go build
+          echo "Output build commands"
+          ../rendr build .
+          echo "Run build commands"
+          $(../rendr build .)
