@@ -1,1 +1,5 @@
-build: go install github.com/specgen-io/specgen/v2@v2.1.1814 && go generate && go mod tidy && go build
+build: |
+  $(go install github.com/specgen-io/specgen/v2@v2.1.1814)
+  go generate
+  go mod tidy
+  go build
