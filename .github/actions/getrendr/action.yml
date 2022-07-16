@@ -1,0 +1,15 @@
+name: Get rendr
+description: Downloads rendr tool
+inputs:
+  version:
+    description: Version of the rendr tool.
+    required: false
+    default: latest
+runs:
+  using: "composite"
+  steps:
+    - name: Get rendr
+      run: |
+        curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/${{ inputs.version }}/rendr_linux_amd64.zip"
+        unzip -o rendr_linux_amd64.zip
+        ./rendr help

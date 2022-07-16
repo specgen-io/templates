@@ -16,25 +16,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set Environment Variables
-        uses: ./.github/actions/setvars
+      - uses: ./.github/actions/setvars
+
+      - uses: ./.github/actions/getrendr
 
       - uses: actions/setup-go@v3
         with:
           go-version: '1.18.0'
 
-      - name: Get rendr
-        run: |
-          curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/latest/rendr_linux_amd64.zip"
-          unzip -o rendr_linux_amd64.zip
-          ./rendr help
-
       - name: Test service-go
         run: |
           ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
+          export BUILD_COMMANDS=$(rendr build output)
           cd output
-          echo "Executing build commands"
-          ../rendr build . | while read BUILD_COMMAND ; do
+          echo "Build commands:"
+          echo "$BUILD_COMMANDS"
+          echo "$BUILD_COMMANDS" | while read BUILD_COMMAND ; do
             echo "Executing: $BUILD_COMMAND"
             $BUILD_COMMAND
           done
