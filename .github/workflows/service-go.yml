@@ -34,12 +34,16 @@ jobs:
           ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
           cd output
 
-          echo "Splitting build commands"
+          echo "Printing build commands from rendr"
+          ../rendr build .
+
+          echo "Put build commands to variable"
           export BUILD_COMMANDS=$(../rendr build .)
 
-          echo "Output build commands"
-          echo $BUILD_COMMANDS
+          echo "Output build commands variable"
+          echo "$BUILD_COMMANDS"
 
+          echo "List build commands"
           for BUILD_COMMAND in $BUILD_COMMANDS
           do
               echo "Command: $BUILD_COMMAND"
