@@ -36,5 +36,5 @@ jobs:
           echo "Executing build commands"
           ../rendr build . | while read BUILD_COMMAND ; do
             echo "Executing: $BUILD_COMMAND"
-            $($BUILD_COMMAND)
+            $BUILD_COMMAND
           done
