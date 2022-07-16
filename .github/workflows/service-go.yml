@@ -45,14 +45,6 @@ jobs:
 
           echo "List build commands - while"
           ../rendr build . | while read BUILD_COMMAND ; do
-            echo "Command: $BUILD_COMMAND"
+            echo "Executing: $BUILD_COMMAND"
+            $($BUILD_COMMAND)
           done
-
-          echo "List build commands - for"
-          for BUILD_COMMAND in $BUILD_COMMANDS
-          do
-              echo "Command: $BUILD_COMMAND"
-          done
-
-          echo "Run build commands"
-          $(../rendr build .)
