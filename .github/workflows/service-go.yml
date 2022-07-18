@@ -19,8 +19,8 @@ jobs:
       - uses: ./.github/actions/setvars
 
       - uses: ./.github/actions/getrendr
-        secrets:
-          JFROG_PASS: ${{ secrets.JFROG_PASS }}
+        inputs:
+          jfrog_pass: ${{ secrets.JFROG_PASS }}
 
       - uses: actions/setup-go@v3
         with:
