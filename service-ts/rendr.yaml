@@ -23,7 +23,7 @@ args:
   validation:
     type: string
     description: validation library
-    values: [superstruct, iots]
+    values: [superstruct, io-ts]
     default: superstruct
   package:
     type: string

@@ -28,13 +28,13 @@
     {{#validation.superstruct}}
     "superstruct": "^{{versions.superstruct.value}}",
     {{/validation.superstruct}}
-    {{#validation.iots}}
+    {{#validation.io-ts}}
     "fp-ts": "^{{versions.fp-ts.value}}",
     "io-ts": "^{{versions.io-ts.value}}",
     "io-ts-types": "^{{versions.io-ts-types.value}}",
     "monocle-ts": "^{{versions.monocle-ts.value}}",
     "newtype-ts": "^{{versions.newtype-ts.value}}",
-    {{/validation.iots}}
+    {{/validation.io-ts}}
     "yamljs": "^{{versions.yamljs.value}}"
   },
   "devDependencies": {
