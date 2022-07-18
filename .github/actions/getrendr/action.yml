@@ -9,6 +9,7 @@ runs:
   using: "composite"
   steps:
     - name: Get rendr
+      shell: bash
       run: |
         curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/${{ inputs.version }}/rendr_linux_amd64.zip"
         unzip -o rendr_linux_amd64.zip
