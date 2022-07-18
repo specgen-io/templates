@@ -26,14 +26,10 @@ jobs:
         with:
           go-version: '1.18.0'
 
-      - name: Test service-go
+      - name: Rendr template
         run: |
           ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
-          export BUILD_COMMANDS=$(./rendr build output)
-          cd output
-          echo "Build commands:"
-          echo "$BUILD_COMMANDS"
-          echo "$BUILD_COMMANDS" | while read BUILD_COMMAND ; do
-            echo "Executing: $BUILD_COMMAND"
-            $BUILD_COMMAND
-          done
+
+      - uses: ./.github/actions/runbuild
+        with:
+          path: output

@@ -1,0 +1,20 @@
+name: Run build
+description: Executes rendr build commands
+inputs:
+  path:
+    description: Path where template was rendered to.
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Run build commands from rendr
+      shell: bash
+      run: |
+        export BUILD_COMMANDS=$(./rendr build ${{ inputs.path }})
+        cd ${{ inputs.path }}
+        echo "Build commands:"
+        echo "$BUILD_COMMANDS"
+        echo "$BUILD_COMMANDS" | while read BUILD_COMMAND ; do
+          echo "Executing: $BUILD_COMMAND"
+          $BUILD_COMMAND
+        done
