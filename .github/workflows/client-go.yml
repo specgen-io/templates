@@ -25,7 +25,7 @@ jobs:
 
       - name: Rendr template
         run: |
-          ./rendr render -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. -go
+          ./rendr render -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. client-go
 
       - uses: ./.github/actions/runbuild
         with:
