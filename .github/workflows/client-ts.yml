@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         client: [axios, browser-fetch, node-fetch]
-        validation: [superstruct, iots]
+        validation: [superstruct, io-ts]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
