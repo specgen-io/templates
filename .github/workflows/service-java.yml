@@ -18,22 +18,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set Environment Variables
-        uses: ./.github/actions/setvars
+      - uses: ./.github/actions/setvars
+
+      - uses: ./.github/actions/getrendr
+        with:
+          jfrog_pass: ${{ secrets.JFROG_PASS }}
 
       - uses: actions/setup-java@v3.1.0
         with:
           distribution: 'zulu'
           java-version: '11'
 
-      - name: Get rendr
-        run: |
-          curl -L -H "X-JFrog-Art-Api:${{ secrets.JFROG_PASS }}" -O "https://specgen.jfrog.io/artifactory/binaries/rendr/latest/rendr_linux_amd64.zip"
-          unzip -o rendr_linux_amd64.zip
-          ./rendr help
-
-      - name: Test service-java
+      - name: Rendr template
         run: |
           ./rendr render -set build=${{ matrix.build }} -set server=${{ matrix.server }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-java
-          cd output
-          $(../rendr build .)
+
+      - uses: ./.github/actions/runbuild
+        with:
+          path: output

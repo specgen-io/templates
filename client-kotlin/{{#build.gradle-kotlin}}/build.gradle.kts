@@ -29,6 +29,7 @@ dependencies {
 specgen {
     clientKotlin {
         jsonlib.set("{{jsonlib.value}}")
+        client.set("{{client.value}}")
         packageName.set("{{package.value}}")
         specFile.set(file("spec.yaml"))
     }

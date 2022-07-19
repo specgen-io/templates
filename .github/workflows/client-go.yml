@@ -1,0 +1,32 @@
+name: client-go
+on:
+  push:
+    paths:
+      - .github/variables/**
+      - .github/actions/**
+      - .github/workflows/client-go.yml
+      - client-go/**
+  workflow_dispatch: {}
+jobs:
+  client-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setvars
+
+      - uses: ./.github/actions/getrendr
+        with:
+          jfrog_pass: ${{ secrets.JFROG_PASS }}
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.18.0'
+
+      - name: Rendr template
+        run: |
+          ./rendr render -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. client-go
+
+      - uses: ./.github/actions/runbuild
+        with:
+          path: output

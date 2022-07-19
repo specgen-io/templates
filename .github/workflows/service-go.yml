@@ -1,18 +1,17 @@
-name: service-ts
+name: service-go
 on:
   push:
     paths:
       - .github/variables/**
       - .github/actions/**
-      - .github/workflows/service-ts.yml
-      - service-ts/**
+      - .github/workflows/service-go.yml
+      - service-go/**
   workflow_dispatch: {}
 jobs:
-  service-ts:
+  service-go:
     strategy:
       matrix:
-        server: [express, koa]
-        validation: [superstruct, io-ts]
+        server: [vestigo]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,13 +22,13 @@ jobs:
         with:
           jfrog_pass: ${{ secrets.JFROG_PASS }}
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-go@v3
         with:
-          node-version: 16
+          go-version: '1.18.0'
 
       - name: Rendr template
         run: |
-          ./rendr render -set server=${{ matrix.server }} -set validation=${{ matrix.validation }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-ts
+          ./rendr render -set server=${{ matrix.server }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. service-go
 
       - uses: ./.github/actions/runbuild
         with:
