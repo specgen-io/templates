@@ -49,7 +49,7 @@ args:
         default: 11
       specgen:
         type: string
-        default: 2.1.1794
+        default: 2.1.1853
       jackson:
         type: string
         default: 2.13.3
