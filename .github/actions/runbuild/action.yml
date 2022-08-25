@@ -10,7 +10,7 @@ runs:
     - name: Install yq
       shell: bash
       run: |
-        sudo apt-get install -y yq
+        sudo snap install yq
         yq --help
     - name: Run build commands from rendr
       shell: bash
