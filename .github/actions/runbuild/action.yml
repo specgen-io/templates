@@ -15,8 +15,8 @@ runs:
     - name: Run build commands from rendr
       shell: bash
       run: |
-        export BUILD_COMMANDS=$(./rendr build ${{ inputs.path }})
         cd ${{ inputs.path }}
+        export BUILD_COMMANDS=$(yq eval .build .rendr.yaml)
         echo "Build commands:"
         echo "$BUILD_COMMANDS"
         echo "$BUILD_COMMANDS" | while read BUILD_COMMAND ; do
