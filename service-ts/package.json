@@ -11,48 +11,48 @@
   },
   "dependencies": {
     {{#server.express}}
-    "cors": "^{{versions.cors.value}}",
-    "express": "^{{versions.express.value}}",
+    "cors": "{{versions.cors.value}}",
+    "express": "{{versions.express.value}}",
     {{#swagger.value}}
-    "swagger-ui-express": "^{{versions.swagger-ui-express.value}}",
+    "swagger-ui-express": "{{versions.swagger-ui-express.value}}",
     {{/swagger.value}}
     {{/server.express}}
     {{#server.koa}}
-    "@koa/router": "^{{versions.koa-router.value}}",
-    "koa": "^{{versions.koa.value}}",
-    "koa-bodyparser": "^{{versions.koa-bodyparser.value}}",
+    "@koa/router": "{{versions.koa-router.value}}",
+    "koa": "{{versions.koa.value}}",
+    "koa-bodyparser": "{{versions.koa-bodyparser.value}}",
     {{#swagger.value}}
-    "koa2-swagger-ui": "^{{versions.koa-swagger-ui.value}}",
+    "koa2-swagger-ui": "{{versions.koa-swagger-ui.value}}",
     {{/swagger.value}}
     {{/server.koa}}
     {{#validation.superstruct}}
-    "superstruct": "^{{versions.superstruct.value}}",
+    "superstruct": "{{versions.superstruct.value}}",
     {{/validation.superstruct}}
     {{#validation.io-ts}}
-    "fp-ts": "^{{versions.fp-ts.value}}",
-    "io-ts": "^{{versions.io-ts.value}}",
-    "io-ts-types": "^{{versions.io-ts-types.value}}",
-    "monocle-ts": "^{{versions.monocle-ts.value}}",
-    "newtype-ts": "^{{versions.newtype-ts.value}}",
+    "fp-ts": "{{versions.fp-ts.value}}",
+    "io-ts": "{{versions.io-ts.value}}",
+    "io-ts-types": "{{versions.io-ts-types.value}}",
+    "monocle-ts": "{{versions.monocle-ts.value}}",
+    "newtype-ts": "{{versions.newtype-ts.value}}",
     {{/validation.io-ts}}
-    "yamljs": "^{{versions.yamljs.value}}"
+    "yamljs": "{{versions.yamljs.value}}"
   },
   "devDependencies": {
-    "specgen.io": "^{{versions.specgen.value}}",
-    "typescript": "^{{versions.typescript.value}}",
-    "@types/node": "^{{versions.node.value}}",
+    "specgen.io": "{{versions.specgen.value}}",
+    "typescript": "{{versions.typescript.value}}",
+    "@types/node": "{{versions.node.value}}",
     {{#server.express}}
-    "@types/cors": "^{{versions.cors.value}}",
-    "@types/express": "^{{versions.express.value}}",
+    "@types/cors": "{{versions.cors.value}}",
+    "@types/express": "{{versions.express.value}}",
     {{#swagger.value}}
-    "@types/swagger-ui-express": "^{{versions.swagger-ui-express.value}}",
+    "@types/swagger-ui-express": "{{versions.swagger-ui-express.value}}",
     {{/swagger.value}}
     {{/server.express}}
     {{#server.koa}}
-    "@types/koa": "^{{versions.koa.value}}",
-    "@types/koa__router": "^{{versions.koa_router.value}}",
-    "@types/koa-bodyparser": "^{{versions.koa-bodyparser.value}}",
+    "@types/koa": "{{versions.koa.value}}",
+    "@types/koa__router": "{{versions.koa-router-types.value}}",
+    "@types/koa-bodyparser": "{{versions.koa-bodyparser.value}}",
     {{/server.koa}}
-    "@types/yamljs": "^{{versions.types-yamljs.value}}"
+    "@types/yamljs": "{{versions.types-yamljs.value}}"
   }
 }
