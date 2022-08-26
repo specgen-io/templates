@@ -23,6 +23,7 @@ jobs:
       - uses: ./.github/actions/getspecgen
         with:
           jfrog_pass: ${{ secrets.JFROG_PASS }}
+          version: ${SPECGEN_TOOL_VERSION}
 
       - uses: actions/setup-java@v3.1.0
         with:
