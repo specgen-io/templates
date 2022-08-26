@@ -8,33 +8,33 @@
   },
   "dependencies": {
     {{#client.axios}}
-    "axios": "^{{versions.axios.value}}",
+    "axios": "{{versions.axios.value}}",
     {{/client.axios}}
     {{#client.node-fetch}}
-    "node-fetch": "^{{versions.node-fetch.value}}",
+    "node-fetch": "{{versions.node-fetch.value}}",
     {{/client.node-fetch}}
     {{#validation.superstruct}}
-    "superstruct": "^{{versions.superstruct.value}}"
+    "superstruct": "{{versions.superstruct.value}}"
     {{/validation.superstruct}}
     {{#validation.io-ts}}
-    "fp-ts": "^{{versions.fp-ts.value}}",
-    "io-ts": "^{{versions.io-ts.value}}",
-    "io-ts-types": "^{{versions.io-ts-types.value}}",
-    "monocle-ts": "^{{versions.monocle-ts.value}}",
-    "newtype-ts": "^{{versions.newtype-ts.value}}"
+    "fp-ts": "{{versions.fp-ts.value}}",
+    "io-ts": "{{versions.io-ts.value}}",
+    "io-ts-types": "{{versions.io-ts-types.value}}",
+    "monocle-ts": "{{versions.monocle-ts.value}}",
+    "newtype-ts": "{{versions.newtype-ts.value}}"
     {{/validation.io-ts}}
   },
   "devDependencies": {
-    "specgen.io": "^{{versions.specgen.value}}",
+    "specgen.io": "{{versions.specgen.value}}",
     {{#client.browser-fetch}}
-    "@types/node": "^{{versions.node.value}}",
-    "ts-node": "^{{versions.ts-node.value}}",
-    "tsm": "^{{versions.tsm.value}}",
+    "@types/node": "{{versions.node.value}}",
+    "ts-node": "{{versions.ts-node.value}}",
+    "tsm": "{{versions.tsm.value}}",
     {{/client.browser-fetch}}
     {{#client.node-fetch}}
-    "ts-node": "^{{versions.ts-node.value}}",
-    "tsm": "^{{versions.tsm.value}}",
+    "ts-node": "{{versions.ts-node.value}}",
+    "tsm": "{{versions.tsm.value}}",
     {{/client.node-fetch}}
-    "typescript": "^{{versions.typescript.value}}"
+    "typescript": "{{versions.typescript.value}}"
   }
 }

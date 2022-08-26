@@ -37,45 +37,42 @@ args:
     type: group
     noinput: true
     args:
-      node:
-        type: string
-        default: 15.2.2
-      specgen:
-        type: string
-        default: 2.1.1853
       typescript:
         type: string
         default: 4.7.4
-      superstruct:
-        type: string
-        default: 0.15.2
-      fp-ts:
-        type: string
-        default: 2.9.3
-      io-ts:
-        type: string
-        default: 2.2.13
-      io-ts-types:
-        type: string
-        default: 0.5.16
-      monocle-ts:
-        type: string
-        default: 2.0.0
-      newtype-ts:
-        type: string
-        default: 0.3.2
-      axios:
-        type: string
-        default: 0.21.1
-      node-fetch:
-        type: string
-        default: 3.1.0
       node:
         type: string
-        default: 16.11.11
+        default: ^16.11.11
       ts-node:
         type: string
-        default: 10.4.0
+        default: ^10.4.0
       tsm:
         type: string
-        default: 2.2.1
+        default: ^2.2.1
+      specgen:
+        type: string
+        default: ^2.1.1853
+      superstruct:
+        type: string
+        default: ^0.15.2
+      fp-ts:
+        type: string
+        default: ^2.9.3
+      io-ts:
+        type: string
+        default: ^2.2.13
+      io-ts-types:
+        type: string
+        default: ^0.5.16
+      monocle-ts:
+        type: string
+        default: ^2.0.0
+      newtype-ts:
+        type: string
+        default: ^0.3.2
+      axios:
+        type: string
+        default: ^0.21.1
+      node-fetch:
+        type: string
+        default: ^3.1.0
