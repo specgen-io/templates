@@ -11,7 +11,7 @@ runs:
       shell: bash
       run: |
         sudo snap install yq
-        yq --help
+        yq --version
     - name: Run build commands from rendr
       shell: bash
       run: |
