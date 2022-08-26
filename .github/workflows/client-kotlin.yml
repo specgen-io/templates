@@ -20,7 +20,7 @@ jobs:
 
       - uses: ./.github/actions/setvars
 
-      - uses: ./.github/actions/getrendr
+      - uses: ./.github/actions/getspecgen
         with:
           jfrog_pass: ${{ secrets.JFROG_PASS }}
 
@@ -31,7 +31,7 @@ jobs:
 
       - name: Rendr template
         run: |
-          ./rendr render -set build=${{ matrix.build }} -set client=${{ matrix.client }} -set jsonlib=${{ matrix.jsonlib }} -set versions.specgen=${SPECGEN_VERSION} -noinput -out output file:///. client-kotlin
+          ./specgen new client-kotlin --set build=${{ matrix.build }} --set client=${{ matrix.client }} --set jsonlib=${{ matrix.jsonlib }} --set versions.specgen=${SPECGEN_VERSION} --noinput --out output --source file:///.
 
       - uses: ./.github/actions/runbuild
         with:
