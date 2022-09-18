@@ -2,7 +2,7 @@ package {{package.value}};
 
 import com.squareup.moshi.Moshi;
 import org.springframework.context.annotation.*;
-import {{package.value}}.json.Json;
+import {{package.value}}.json.CustomMoshiAdapters;
 
 @Configuration
 public class MoshiConfiguration {
@@ -10,7 +10,7 @@ public class MoshiConfiguration {
 	@Primary
 	public Moshi getMoshi() {
 		var moshiBuilder = new Moshi.Builder();
-		Json.setupMoshiAdapters(moshiBuilder);
+		CustomMoshiAdapters.setup(moshiBuilder);
 		return moshiBuilder.build();
 	}
 }
