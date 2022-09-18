@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         build: [maven, gradle-groovy, gradle-kotlin]
-        server: [micronaut]
+        server: [spring, micronaut]
         jsonlib: [jackson, moshi]
     runs-on: ubuntu-latest
     steps:
