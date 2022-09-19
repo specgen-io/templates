@@ -23,7 +23,7 @@ args:
   server:
     type: string
     description: server framework
-    values: [micronaut]
+    values: [micronaut, spring]
     default: micronaut
   jsonlib:
     type: string
@@ -55,6 +55,15 @@ args:
       java:
         type: string
         default: 11
+      springfox:
+        type: string
+        default: 3.0.0
+      spring_boot:
+        type: string
+        default: 2.5.5
+      spring_dependency:
+        type: string
+        default: 1.0.11.RELEASE 
       micronaut:
         type: string
         default: 3.4.2
