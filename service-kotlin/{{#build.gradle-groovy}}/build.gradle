@@ -35,7 +35,6 @@ dependencies {
     kapt 'io.micronaut.serde:micronaut-serde-processor'
     implementation 'io.micronaut:micronaut-jackson-databind'
     implementation 'io.micronaut.serde:micronaut-serde-jackson'
-    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     {{/jsonlib.jackson}}
     implementation 'io.micronaut:micronaut-runtime'
     implementation 'io.micronaut:micronaut-validation'
@@ -43,6 +42,9 @@ dependencies {
     implementation 'jakarta.annotation:jakarta.annotation-api'
     runtimeOnly 'org.slf4j:slf4j-simple'
     {{/server.micronaut}}
+    {{#jsonlib.jackson}}
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    {{/jsonlib.jackson}}
     {{#jsonlib.moshi}}
     implementation 'com.squareup.moshi:moshi:{{versions.moshi.value}}'
     implementation 'com.squareup.moshi:moshi-adapters:{{versions.moshi.value}}'
