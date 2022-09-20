@@ -5,7 +5,7 @@ import org.springframework.context.annotation.*
 import {{package.value}}.json.setupMoshiAdapters
 
 @Configuration
-open class MoshiConfiguration {
+class MoshiConfiguration {
     @Bean
     @Primary
     fun getMoshi(): Moshi {

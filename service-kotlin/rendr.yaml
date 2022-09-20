@@ -55,6 +55,9 @@ args:
       java:
         type: string
         default: 11
+      kotlin_spring:
+        type: string
+        default: 1.7.0
       springfox:
         type: string
         default: 3.0.0
