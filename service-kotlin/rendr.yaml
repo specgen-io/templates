@@ -51,7 +51,7 @@ args:
         default: 2.1.1853
       kotlin:
         type: string
-        default: 1.6.10
+        default: 1.7.0
       java:
         type: string
         default: 11
