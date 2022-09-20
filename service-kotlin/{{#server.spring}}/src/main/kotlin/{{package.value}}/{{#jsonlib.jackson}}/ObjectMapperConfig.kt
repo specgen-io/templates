@@ -6,7 +6,7 @@ import org.springframework.context.annotation.*
 import {{package.value}}.json.setupObjectMapper
 
 @Configuration
-class ObjectMapperConfig {
+open class ObjectMapperConfig {
     @Bean
     @Primary
     fun objectMapper(): ObjectMapper {
