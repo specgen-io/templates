@@ -1,12 +1,12 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '{{versions.kotlin.value}}'
-    id 'org.jetbrains.kotlin.kapt' version '{{versions.kotlin.value}}'
     {{#server.spring}}
     id 'org.jetbrains.kotlin.plugin.spring' version '{{versions.kotlin_spring.value}}'
     id 'org.springframework.boot' version '{{versions.spring_boot.value}}'
     id 'io.spring.dependency-management' version '{{versions.spring_dependency.value}}'
     {{/server.spring}}
     {{#server.micronaut}}
+    id 'org.jetbrains.kotlin.kapt' version '{{versions.kotlin.value}}'
     id 'org.jetbrains.kotlin.plugin.allopen' version '{{versions.kotlin.value}}'
     id 'io.micronaut.application' version '{{versions.micronaut_application.value}}'
     {{/server.micronaut}}
