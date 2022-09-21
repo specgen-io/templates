@@ -7,7 +7,7 @@ import yamljs from 'yamljs';
 
 import { specRouter } from './spec/spec_router';
 
-import {sampleService} from './sample_service';
+import { services } from './services';
 
 const app = express();
 const port = 8081;
@@ -21,9 +21,7 @@ app.use("/docs/swagger.yaml", express.static("docs/swagger.yaml"))
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(yamljs.load("./docs/swagger.yaml")))
 {{/swagger.value}}
 
-const services = {sampleService: sampleService()}
-let router = specRouter(services)
-app.use("/", router)
+app.use("/", specRouter(services))
 
 app.listen(port, () => {
     console.log( `server started at http://localhost:${ port }` );

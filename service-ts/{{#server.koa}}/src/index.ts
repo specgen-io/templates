@@ -9,7 +9,7 @@ import yamljs from 'yamljs';
 
 import {specRouter} from './spec/spec_router';
 
-import {sampleService} from './sample_service';
+import { services } from './services';
 
 const app = new Koa();
 app.use(bodyParser({enableTypes: ['json', 'form', 'text']}));
@@ -20,7 +20,6 @@ docsRouter.get('/docs', koaSwagger({swaggerOptions: {spec: yamljs.load("./docs/s
 {{/swagger.value}}
 app.use(docsRouter.routes());
 
-const services = {sampleService: sampleService()}
 let router = specRouter(services)
 app.use(router.routes()).use(router.allowedMethods())
 
