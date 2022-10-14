@@ -13,4 +13,9 @@ public class MoshiConfiguration {
 		CustomMoshiAdapters.setup(moshiBuilder);
 		return moshiBuilder.build();
 	}
+
+    @Bean
+    public Json json() {
+        return new Json(objectMapper());
+    }
 }

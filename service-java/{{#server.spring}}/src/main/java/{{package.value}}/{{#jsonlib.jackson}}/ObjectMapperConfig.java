@@ -13,4 +13,9 @@ public class ObjectMapperConfig {
 		CustomObjectMapper.setup(objectMapper);
 		return objectMapper;
 	}
+
+    @Bean
+    public Json json() {
+        return new Json(objectMapper());
+    }
 }
