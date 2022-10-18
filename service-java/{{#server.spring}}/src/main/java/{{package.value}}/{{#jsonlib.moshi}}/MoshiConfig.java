@@ -5,7 +5,7 @@ import org.springframework.context.annotation.*;
 import {{package.value}}.json.*;
 
 @Configuration
-public class MoshiConfiguration {
+public class MoshiConfig {
 	@Bean
 	@Primary
 	public Moshi getMoshi() {

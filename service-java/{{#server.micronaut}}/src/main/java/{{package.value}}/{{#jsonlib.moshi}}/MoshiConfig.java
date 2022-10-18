@@ -5,7 +5,7 @@ import io.micronaut.context.annotation.*;
 import {{package.value}}.json.*;
 
 @Factory
-public class MoshiFactory {
+public class MoshiConfig {
     @Bean
     public Moshi getMoshi() {
         var moshiBuilder = new Moshi.Builder();
