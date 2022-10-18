@@ -15,6 +15,6 @@ public class MoshiConfig {
 
     @Bean
     public Json json() {
-        return new Json(objectMapper());
+        return new Json(getMoshi());
     }
 }
