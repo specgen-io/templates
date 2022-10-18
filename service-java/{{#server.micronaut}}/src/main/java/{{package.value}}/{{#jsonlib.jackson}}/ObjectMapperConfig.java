@@ -3,7 +3,7 @@ package {{package.value}};
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.context.annotation.*;
 import io.micronaut.jackson.ObjectMapperFactory;
-import {{package.value}}.json.CustomObjectMapper;
+import {{package.value}}.json.*;
 
 @Factory
 @Replaces(ObjectMapperFactory.class)
@@ -11,7 +11,7 @@ public class ObjectMapperConfig {
     @Bean
 	@Replaces(ObjectMapper.class)
 	public ObjectMapper objectMapper() {
-		ObjectMapper objectMapper = new ObjectMapper();
+		var objectMapper = new ObjectMapper();
 		CustomObjectMapper.setup(objectMapper);
 		return objectMapper;
     }
