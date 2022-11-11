@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.micronaut.context.annotation.*
 import io.micronaut.jackson.ObjectMapperFactory
-import {{package.value}}.json.setupObjectMapper
+import {{package.value}}.json.*
 
 @Factory
 @Replaces(ObjectMapperFactory::class)

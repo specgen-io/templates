@@ -2,7 +2,7 @@ package {{package.value}};
 
 import com.squareup.moshi.Moshi
 import io.micronaut.context.annotation.*
-import {{package.value}}.json.setupMoshiAdapters
+import {{package.value}}.json.*
 
 @Factory
 class MoshiConfig {
