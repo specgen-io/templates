@@ -14,4 +14,9 @@ class ObjectMapperConfig {
         setupObjectMapper(objectMapper)
         return objectMapper
     }
+
+    @Bean
+    fun json(): Json {
+        return Json(objectMapper())
+    }
 }
