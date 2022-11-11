@@ -1,16 +1,20 @@
 package {{package.value}};
 
 import com.squareup.moshi.Moshi
-import io.micronaut.context.annotation.Factory
-import jakarta.inject.Singleton
-import {{package.value}}.json.setupMoshiAdapters
+import io.micronaut.context.annotation.*
+import {{package.value}}.json.*
 
 @Factory
-class MoshiFactory {
-    @Singleton
+class MoshiConfig {
+    @Bean
     fun getMoshi(): Moshi {
         val moshiBuilder = Moshi.Builder()
         setupMoshiAdapters(moshiBuilder)
         return moshiBuilder.build()
+    }
+
+    @Bean
+    fun json(): Json {
+        return Json(getMoshi())
     }
 }

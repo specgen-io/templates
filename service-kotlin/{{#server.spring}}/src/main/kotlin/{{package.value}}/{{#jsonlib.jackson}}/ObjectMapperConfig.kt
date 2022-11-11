@@ -3,7 +3,7 @@ package {{package.value}}
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.springframework.context.annotation.*
-import {{package.value}}.json.setupObjectMapper
+import {{package.value}}.json.*
 
 @Configuration
 class ObjectMapperConfig {
@@ -13,5 +13,10 @@ class ObjectMapperConfig {
         val objectMapper = jacksonObjectMapper()
         setupObjectMapper(objectMapper)
         return objectMapper
+    }
+
+    @Bean
+    fun json(): Json {
+        return Json(objectMapper())
     }
 }
