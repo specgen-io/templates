@@ -1,4 +1,4 @@
-//go:generate specgen-golang service-go --spec-file spec.yaml --module-name {{project.value}} --generate-path ./spec --services-path ./services {{#swagger.value}}--swagger-path docs/swagger.yaml {{/swagger.value}}
+//go:generate specgen-golang service-go --jsonmode {{jsonmode.value}} --server vestigo --spec-file spec.yaml --module-name {{project.value}} --generate-path ./spec --services-path ./services {{#swagger.value}}--swagger-path docs/swagger.yaml {{/swagger.value}}
 
 package main
 
@@ -19,16 +19,17 @@ func main() {
 	decimal.MarshalJSONWithoutQuotes = true
 
 	router := vestigo.NewRouter()
-
+	{{#cors.value}}
 	router.SetGlobalCors(&vestigo.CorsAccessControl{
 		AllowOrigin: []string{"*", "*"},
 	})
+	{{/cors.value}}
 
-	sampleService := &services.SampleService{}
+	spec.AddRoutes(router, services.Create())
 
-	spec.AddRoutes(router, sampleService)
-
+	{{#swagger.value}}
 	router.Get("/docs/*", http.StripPrefix("/docs/", http.FileServer(http.Dir("docs"))).ServeHTTP)
+	{{/swagger.value}}
 
 	log.Infof("Starting service on port: %s", *port)
 	log.Fatal(http.ListenAndServe(":"+*port, router))

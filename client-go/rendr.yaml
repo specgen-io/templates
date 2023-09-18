@@ -7,6 +7,11 @@ args:
     type: string
     description: project name
     default: the-client
+  jsonmode:
+    type: string
+    description: JSON mode
+    values: [strict, nonstrict]
+    default: strict  
   client:
     type: string
     description: client library
@@ -25,7 +30,7 @@ args:
         default: 1.18
       specgen:
         type: string
-        default: 2.1.1853
+        default: 2.1.2134
       civil:
         type: string
         default: 0.84.0
