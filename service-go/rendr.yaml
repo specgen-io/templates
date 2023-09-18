@@ -13,7 +13,7 @@ args:
     type: string
     description: JSON mode
     values: [strict, nonstrict]
-    default: strict  
+    default: strict
   server:
     type: string
     description: server framework
@@ -40,7 +40,7 @@ args:
         default: 1.18
       specgen:
         type: string
-        default: 2.1.2134
+        default: 2.2.0
       civil:
         type: string
         default: 0.82.0
@@ -68,4 +68,3 @@ args:
       testify:
         type: string
         default: 1.7.0
-      

@@ -25,7 +25,7 @@ args:
         default: 4.7.4
       specgen:
         type: string
-        default: ^2.1.1853
+        default: 2.2.0
       superstruct:
         type: string
         default: ^0.15.2

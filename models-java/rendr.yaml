@@ -1,7 +1,7 @@
 rendr: 0
 name: models-java
 title: Specgen Java Models
-executables: 
+executables:
   - "{{#build.maven}}/mvn"
   - "{{#build.gradle-kotlin}}/gradlew"
   - "{{#build.gradle-groovy}}/gradlew"
@@ -38,10 +38,10 @@ args:
         default: 3.8.1
       java:
         type: string
-        default: 11  
+        default: 11
       specgen:
         type: string
-        default: 2.1.1853
+        default: 2.2.0
       jackson:
         type: string
         default: 2.13.3
